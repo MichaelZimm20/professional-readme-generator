@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -131,14 +132,15 @@ function writeToFile(fileName, data)  {
 function init() {
     inquirer
         .prompt(questions)
-        .then(answers => {
+            .then(answers => {
             console.log(answers)
+          
 
 
         //after all answers are collected write to file!
         //TODO -build a string that uses our answers to generate some markdown, and write that
         // to our file as the 'data' parameter. (replace the test values below)
-        writeToFile('text.txt', 'here is some data')
+        writeToFile('./dist/README.md', readmeFile)
         });
 }
 
