@@ -87,7 +87,7 @@ const questions = [
             type: 'list',
             name: 'license', // the license. This lets other developers know what they can and cannot do with your project.    
             message: 'Select each license that was used for this project. ',
-            choices: ['Apache license', 'MIT license', 'ISC license', 'Unlicense', 'No license used' ]
+            choices: ['Apache license', 'MIT license', 'ISC license', 'The Unlicense', 'No license used' ]
         },
         {
             type: 'input',

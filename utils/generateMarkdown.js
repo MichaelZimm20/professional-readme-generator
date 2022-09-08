@@ -4,12 +4,18 @@ function renderLicenseBadge(license) {
   if (license){ 
     switch (license) {
       case (license = 'Apache license'):
+          return `[![License: Apache](https://img.shields.io/badge/license-Apache-blue)](https://choosealicense.com/licenses/apache-2.0/)`;
+      case (license = 'MIT license'):
           return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/#)`;
-        
-        break;
-    
-      default:
-        break;
+      case (license = 'ISC license'):
+          return `[![License: ISC](https://img.shields.io/badge/license-ISC-red)](https://opensource.org/licenses/ISC)`;
+      // If user selects the used: 'The Unlicense'  
+      case (license = 'The Unlicense'):
+          return `[![License: The Unlicense](https://img.shields.io/badge/license-The%20Unlicense-orange)](https://choosealicense.com/licenses/unlicense/)`;        
+      
+      default :
+           // If user selects "no license used" then return empty
+           if (license = 'No license used') return '';
     }
 
   }
