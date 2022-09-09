@@ -1,4 +1,6 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+const emptyStr = '';
+
+// A function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license){ 
@@ -24,7 +26,7 @@ function renderLicenseBadge(license) {
 };
 
 
-// TODO: Create a function that returns the license link
+// A function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license){ 
@@ -49,14 +51,27 @@ function renderLicenseLink(license) {
   };
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
- if (license) {
-  return `${renderLicenseLink(license)}`
+// Create a function that returns the license section of README
+// If there is no license, return an empty string, also will remove any blank space
+function renderLicenseSection(license,data) {
+ if (license !== "No license used" ) {
+  return `
+  ## License
+  ${renderLicenseLink(license)}`;
  } else {
-  return '';
+  return emptyStr.replace(/ /g,'');
  }
+}
+//A function that returns the license section of README in the table of Contents
+// If there is no license, return an empty string, also will remove any blank space
+function renderLicenseContents(license) {
+  if (license !== "No license used") {
+    return `
+  * [License](#license)
+    `;
+   } else {
+      return emptyStr.replace(/ /g,'');
+   }
 }
 
 // TODO: Create a function to generate markdown for README
@@ -72,19 +87,20 @@ function generateMarkdown(data) {
   ## Table of Contents 
   * [Installation](#installation)
   * [Usage](#usage)
+  ${renderLicenseContents(data.license)}
   * [Contribution](#contribution)
   * [Tests](#tests)
   * [Questions](#questions)
   
-  ## Installation
+  ## Installation (#TableofContents)
   ${data.installation}
 
   ## Usage 
-  (${data.usage}\n)
-  ![Screenshot for project](./assets/images/${data.example})
-
-  ## License 
-  ${renderLicenseLink(data.license)}
+  ${data.usage}\n
+  
+  ![Project Screenshot](../assets/images/${data.example})
+ 
+  ${renderLicenseSection(data.license)}
 
   ## Contribution & Credits
   ${data.contribution}
@@ -94,8 +110,8 @@ function generateMarkdown(data) {
 
   ## Questions 
   If you have any questions or concerns, contact:
-  * GitHub:[${data.github}](https://github.com/${data.github})
-  * [Email: ${data.email}](mailto:${data.email})
+  * GitHub: [${data.github}](https://github.com/${data.github})
+  * Email: [${data.email}](mailto:${data.email})
 `;
 }
 
