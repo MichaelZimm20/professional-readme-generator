@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require("./utils/generateMarkdown");
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -32,9 +32,10 @@ const questions = [
                 }
             }
         },
+        //title of project
         {
             type: 'input',
-            name: 'title', //title of project
+            name: 'title', 
             message: 'What is the title of your project? (Required)',
             validate: titleInput => {
                 if (titleInput) {
@@ -45,9 +46,10 @@ const questions = [
                 }
             }
         },
+        //Describe your project. Motivation, what is solved, why you built it, how its used.
         {
             type: 'input',
-            name: 'description', //Describe your project. Motivation, what is solved, why you built it, how its used.
+            name: 'description', 
             message: 'Provide a detail description of the project?  (Required)',
             validate: descriptionInput => {
                 if (descriptionInput) {
@@ -58,10 +60,11 @@ const questions = [
                 }
             }
         },
+        // installation steps  
         {
             type: 'input',
-            name: 'installation', // installation steps     
-            message: 'Provide a step-by-step description of how install your project.  (Required)',
+            name: 'installation',    
+            message: 'Provide a step-by-step of how install your project.  (Required)',
             validate: installInput => {
                 if (installInput) {
                     return true;
@@ -71,28 +74,52 @@ const questions = [
                 }
             }
         },
+        // Provide instructions and examples for use. Include screenshots as needed. 
+        //and examples for use.
         {
             type: 'input',
-            name: 'usage', // Provide instructions and examples for use. Include screenshots as needed.   
-            message: 'Provide instructions and examples for use.To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Use the relative filepath, add it to your README. (Required)',
+            name: 'usage',   
+            message: 'Provide instructions on how to use your app. (Required)',
             validate: usageInput => {
                 if (usageInput) {
                     return true;
                 } else {
                     console.log('Please provide your instructions and examples!');
                     return false;
+                } 
+            }
+        },
+         // user will provide a screenshot of the project. PNG or JPEG, JPG. 
+        {
+            type: 'input',
+            name: 'example',  
+            message: 'To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Use the relative filepath, add it to your README. : . (Required)',
+        },
+        // Those who contributed to this project. 
+        {
+            type: 'input',
+            name: 'contribution',   
+            message: 'Provide all those who have contributed and credits, if any, and provide links it needed. (Required)',
+            validate: creditInput => {
+                if (creditInput) {
+                    return true;
+                } else {
+                    console.log('Please contributions and credits!');
+                    return false;
                 }
             }
         },
+        // the license. This lets other developers know what they can and cannot do with your project.
         {
             type: 'list',
-            name: 'license', // the license. This lets other developers know what they can and cannot do with your project.    
+            name: 'license',     
             message: 'Select each license that was used for this project. ',
             choices: ['Apache license', 'MIT license', 'ISC license', 'The Unlicense', 'No license used' ]
         },
+        // provide examples on how to run them here.
         {
             type: 'input',
-            name: 'test', // provide examples on how to run them here.
+            name: 'tests', 
             message: 'Instructions on how to test the application. (Required) ',
             validate: testInput => {
                 if (testInput) {
@@ -134,15 +161,24 @@ function init() {
         .prompt(questions)
             .then(answers => {
             console.log(answers)
-          
-
-
-        //after all answers are collected write to file!
-        //TODO -build a string that uses our answers to generate some markdown, and write that
-        // to our file as the 'data' parameter. (replace the test values below)
-        writeToFile('./dist/README.md', readmeFile)
-        });
+            writeToFile('./dist/README.md', generateMarkdown(answers))
+            .then(writeToFileResponse => {
+                console.log(writeToFileResponse.message);
+            })
+            // .then(markdownData => {
+            //     console.log(markdownData);
+            //     return generateMarkdown(markdownData);
+            // })
+            // .then(readmeFile => {
+            //     //after all answers are collected write to file!
+            //    return writeToFile('./dist/README.md', generateMarkdown(readmeFile));
+            // })
+            .catch(err => {
+                console.log(err)
+            });    
+        })
 }
 
 // Function call to initialize app
 init();
+
