@@ -44,7 +44,7 @@
 [How to create a Professional README](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
   
 ## Tests
-* Tests can be used by accessing the DIST folder. No other tests will be provided.
+* Tests can be used by accessing the DIST and assets/images folder. No other tests will be provided.
 
 ## Important Links 
 * GitHub Link: https://github.com/MichaelZimm20/professional-readme-generator
