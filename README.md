@@ -32,7 +32,7 @@
   <br/>
 
 ## License
-  The Following licenses were used in for project demonstration purposes:
+  The Following licenses were used in for project demonstration purposes: <br/>
   [License: MIT](https://choosealicense.com/licenses/mit/#)<br/>
   [License: Apache](https://choosealicense.com/licenses/apache-2.0/)<br/>
   [License: ISC](https://opensource.org/licenses/ISC) <br/>
