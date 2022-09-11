@@ -13,10 +13,10 @@ function renderLicenseBadge(license) {
           return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/#)`;
       // If user selects the following license: 'ISC license' 
       case (license = 'ISC license'):
-          return `[![License: ISC](https://img.shields.io/badge/license-ISC-red)](https://choosealicense.com/licenses/mit/#)`;
+          return `[![License: ISC](https://img.shields.io/badge/license-ISC-red)](https://opensource.org/licenses/ISC)`;
       // If user selects the following license: 'The Unlicense' 
       case (license = 'The Unlicense'):
-          return `[![License: The Unlicense](https://img.shields.io/badge/license-The%20Unlicense-orange)](https://opensource.org/licenses/ISC)`;        
+          return `[![License: The Unlicense](https://img.shields.io/badge/license-The%20Unlicense-orange)](https://choosealicense.com/licenses/unlicense/)`;        
       
       default :
            // If user selects "no license used" then return empty
@@ -92,7 +92,7 @@ function generateMarkdown(data) {
   * [Tests](#tests)
   * [Questions](#questions)
   
-  ## Installation (#TableofContents)
+  ## Installation 
   ${data.installation}
 
   ## Usage 
